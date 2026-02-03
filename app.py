@@ -15,7 +15,7 @@ def agenda():
         data_conclusao = request.form["data-conclusao"]
         tarefa = Tarefa(titulo_tarefa, data_conclusao)
 
-    return render_template('agenda.html', titulo='agenda', tarefa=tarefa)
+    return render_template('agenda.html', titulo='Agenda', tarefa=tarefa)
 
 @app.route('/ola')
 def ola_mundo():
