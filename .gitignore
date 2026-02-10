@@ -4,3 +4,11 @@
 # Arquivos Python compilados
 __pycache__/
 *.pyc
+
+# Banco de dados SQlite 
+data/
+*.db
+*.sqlite
+*.sqlite3
+
+
