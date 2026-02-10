@@ -23,7 +23,10 @@
         
         {% for tarefa in tarefas %}
             <ul id="tarefas">
-                    <li><a href="{{url_for('update', idTarefa=tarefa.id_tarefa)}}">📝 Editar</a> — {{ tarefa.titulo_tarefa }} - {{ tarefa.data_conclusao }} — <a href="{{ url_for('delete', idTarefa=tarefa.id_tarefa) }}">Apagar 🗑️</a></li>
+                    <li>
+                        <a href="{{ url_for('update', idTarefa=tarefa.id_tarefa) }}">📝 Editar</a> — {{ tarefa.titulo_tarefa }} - {{ tarefa.data_conclusao }} — 
+                        <a href="{{ url_for('delete', idTarefa=tarefa.id_tarefa) }}">Apagar 🗑️</a>
+                    </li>
             </ul>
         {% endfor %}
         
@@ -33,4 +36,3 @@
 
     {% endif %}
 {% endblock %}
-

@@ -28,9 +28,9 @@ class Tarefa:
         @classmethod
         def obter_tarefas(cls) -> list[Self]:
                 with Database('./data/tarefas.sqlite3') as db:
-                        query: str = "SELECT titulo_tarefa, data_conclusao FROM tarefas;"
+                        query: str = "SELECT titulo_tarefa, data_conclusao, id FROM tarefas;"
                         resultados: list[Any] = db.buscar_todos(query)
-                        tarefas: list[Self] = [cls(titulo, data) for titulo, data in resultados]
+                        tarefas: list[Self] = [cls(titulo, data, id) for titulo, data, id in resultados]
                         return tarefas
                         # GET;
 
@@ -42,10 +42,10 @@ class Tarefa:
                         return resultado
                         
 
-        def atualizar_tarefa(self, novo_titulo: Optional[str] = None, nova_data: Optional[str] = None) -> Cursor:
+        def atualizar_tarefa(self) -> Cursor:
                 with Database('./data/tarefas.sqlite3') as db:
                         query: str = "UPDATE tarefas SET titulo_tarefa = ?, data_conclusao = ? WHERE id = ?;"
-                        params: tuple = (novo_titulo or self.titulo_tarefa, nova_data or self.data_conclusao, self.id)
+                        params: tuple = (self.titulo_tarefa, self.data_conclusao, self.id_tarefa)
                         resultado: Cursor = db.executar(query, params)
                         return resultado
                         
